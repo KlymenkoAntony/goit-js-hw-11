@@ -1,10 +1,8 @@
 export function scroll() {
-    const { height: cardHeight } = document
-        .querySelector('.gallery')
-        .firstElementChild.getBoundingClientRect();
-
-    window.scrollBy({
-        top: cardHeight * 2,
-        behavior: 'smooth',
+    const listElm = document.querySelector('.gallery');
+    listElm.addEventListener('scroll', e => {
+      if(listElm.scrollTop + listElm.clientHeight >= listElm.scrollHeight) {
+        this.loadMore();
+      }
     });
 }
